@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import Timer from "@/components/timer";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createPoints, getPoints } from "@/data/points";
+import { formatarDataHora } from "@/lib/utils";
 
 export default function NotePage() {
   const queryClient = useQueryClient();
@@ -31,10 +32,12 @@ export default function NotePage() {
   });
 
   async function handleCreatePoints() {
-    const title = "Ponto Registrado";
-    const dateHour = "02/09/2024 - 09:30";
-    const typePoint = "Entrada";
+    const dateHour = formatarDataHora();
+    const ultimoPonto = points && points[points.length - 1];
+    const typePoint =
+      ultimoPonto && ultimoPonto.typePoint === "Entrada" ? "Saída" : "Entrada";
 
+    const title = "Ponto Registrado";
     try {
       await createPointsFn({
         title,
