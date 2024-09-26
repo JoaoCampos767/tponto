@@ -4,6 +4,7 @@ import Timer from "@/components/timer";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { createPoints, getPoints } from "@/data/points";
 import { formatarDataHora } from "@/lib/utils";
+import { ClockIcon, EntradaIcon, SaidaIcon } from "@/components/icons";
 
 export default function NotePage() {
   const queryClient = useQueryClient();
@@ -16,8 +17,6 @@ export default function NotePage() {
   const { mutateAsync: createPointsFn } = useMutation({
     mutationFn: createPoints,
     onSuccess(_, variables) {
-      const cached = queryClient.getQueryData(["points"]);
-
       queryClient.setQueryData(["points"], (data: any) => {
         return [
           ...data,
@@ -84,65 +83,5 @@ export default function NotePage() {
         </Button>
       </div>
     </Card>
-  );
-}
-
-function EntradaIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M5 12h14" />
-      <path d="M12 5l7 7-7 7" />
-    </svg>
-  );
-}
-
-function SaidaIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M19 12h-14" />
-      <path d="M12 19l-7-7 7-7" />
-    </svg>
-  );
-}
-
-function ClockIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="12" r="10" />
-      <polyline points="12 6 12 12 16 14" />
-    </svg>
   );
 }

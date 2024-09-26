@@ -1,7 +1,13 @@
-export default function HomePage() {
+import { ChartDayPoints } from "@/components/chart-day-points";
+import { ChartMonthPoints } from "@/components/chart-month-points";
+
+export function HomePage() {
   return (
     <>
-      <h1>Home</h1>
+      <div style={{ display: "flex", justifyContent: "space-between" }}>
+        <ChartDayPoints />
+        <ChartMonthPoints />
+      </div>
     </>
   );
 }

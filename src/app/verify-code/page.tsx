@@ -1,8 +1,8 @@
 "use client";
-import { Label } from "@/components/ui/label";
 import {
   InputOTP,
   InputOTPGroup,
+  InputOTPSeparator,
   InputOTPSlot,
 } from "@/components/ui/input-otp";
 import { Button } from "@/components/ui/button";
@@ -26,12 +26,15 @@ export default function VerifyCode() {
           </p>
         </div>
         <div className="space-y-4">
-          <div className="space-y-2">
+          <div className="flex justify-center">
             <InputOTP maxLength={6} pattern="^[0-9]+$">
               <InputOTPGroup>
                 <InputOTPSlot index={0} />
                 <InputOTPSlot index={1} />
                 <InputOTPSlot index={2} />
+              </InputOTPGroup>
+              <InputOTPSeparator />
+              <InputOTPGroup>
                 <InputOTPSlot index={3} />
                 <InputOTPSlot index={4} />
                 <InputOTPSlot index={5} />
